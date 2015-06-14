@@ -50,7 +50,7 @@ Mean of the number of steps taken per day:
 ```{r meanmedian}
 steps_mean   <- mean(steps_taken$steps, na.rm=TRUE)
 ```
-The mean is **`r steps_mean `** 
+The mean is **` format(steps_mean,digits = 8) `** 
 
 
 ## What is the average daily activity pattern?
