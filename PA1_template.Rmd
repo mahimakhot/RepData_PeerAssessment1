@@ -50,7 +50,6 @@ Mean of the number of steps taken per day:
 ```{r meanmedian}
 steps_mean   <- mean(steps_taken$steps, na.rm=TRUE)
 ```
-The mean is **` format(steps_mean,digits = 8) `** 
 
 
 ## What is the average daily activity pattern?
@@ -155,8 +154,8 @@ data_weekdays <- data_by_weekdays(mydata_fill)
 ggplot(data_weekdays, aes(x=interval, y=steps)) + 
         geom_line(color="violet") + 
         facet_wrap(~ dayofweek, nrow=2, ncol=1) +
-        labs(x="Interval", y="Number of steps") +
-        theme_bw()
+        labs(x="Interval", y="Number of steps")
+        
 
 ```
 
