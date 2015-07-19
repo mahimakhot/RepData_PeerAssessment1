@@ -70,7 +70,7 @@ The Histogram of the total number of steps taken per day:
 
 ```r
 ggplot(steps_taken, aes(x = steps)) + 
-       geom_histogram(fill = "green", binwidth = 1000) + 
+       geom_histogram(fill = "blue", binwidth = 1000) + 
         labs(title="Histogram of Steps taken per day", 
              x = "Number of Steps per Day",
              y = "Number of times in a day (Count)")  
@@ -82,7 +82,15 @@ Mean of the number of steps taken per day:
 
 
 ```r
-steps_mean   <- mean(steps_taken$steps, na.rm=TRUE)
+steps_mean   <- round(mean(steps_taken$steps, na.rm=TRUE), digits=2)
+steps_median <- round(median(steps_taken$steps, na.rm=TRUE), digits=2)
+steps_mean
+steps_median
+```
+
+```
+## [1] 10766.19
+## [1] 10765
 ```
 
 
@@ -99,7 +107,7 @@ daily_activity$interval <-
 colnames(daily_activity) <- c("interval", "steps")
  
 ggplot(daily_activity, aes(x=interval, y=steps)) +   
-        geom_line(color="orange", size=1) +  
+        geom_line(color="blue", size=1) +  
         labs(title="Average Daily Activity Pattern",
              x="Interval",
              y="Number of steps") 
@@ -109,6 +117,12 @@ ggplot(daily_activity, aes(x=interval, y=steps)) +
 
 ```r
 max_interval <- daily_activity[which.max(daily_activity$steps),]
+max_interval
+```
+
+```
+##     interval    steps
+## 104      835 206.1698
 ```
 
 
@@ -157,10 +171,14 @@ ggplot(fill_steps_per_day, aes(x = steps)) +
 ```r
 steps_mean_fill   <- mean(fill_steps_per_day$steps, na.rm=TRUE)
 steps_median_fill <- median(fill_steps_per_day$steps, na.rm=TRUE)
+steps_mean_fill
+steps_median_fill
 ```
 
 ```
 ## [1] 0
+## [1] 10766.19
+## [1] 10766.19
 ```
 
 
@@ -202,7 +220,7 @@ data_weekdays <- data_by_weekdays(mydata_fill)
 
 ```r
 ggplot(data_weekdays, aes(x=interval, y=steps)) + 
-        geom_line(color="violet") + 
+        geom_line(color="red") + 
         facet_wrap(~ dayofweek, nrow=2, ncol=1) +
         labs(x="Interval", y="Number of steps")
 ```
